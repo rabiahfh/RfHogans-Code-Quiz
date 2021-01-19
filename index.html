@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <link to style.css  sheet> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Code Quiz</title>
+</head>
+
+<body>
+  <div class="quiz-container">
+    <!-- Top fixed header (highscores and timer) -->
+    <div id="timer"></div>
+    <h1 class="code-heading">Coding Quiz Challenge</h1>
+  </div>
+  <!-- <h1 class="display-4">Code Quiz Challenge!</h1> <br> -->
+  <div class="col-md-12 instructions">
+    <p>Try answering the following code related questions within the time limit.
+      <br>Incorrect answers will decrease your score by 10.
+      Click the start button below to begin the quiz!
+    </p>
+  </div>
+  <button id="start-game">
+    Start Quiz
+  </button>
+  <div id="quiz" style="display: none"></div>
+  <div id="questionsDiv" class="hide">
+  <!-- div for question content -->
+  <div id="question"></div>
+  <div id="choices">
+  </div>
+  </div>
+
+  <div id="correctAnswers"></div>
+  <div id="score" style="display: none"></div>
+  <!-- High Score section -->
+  <section id="highscore-section" class="hide">
+    <div id="high-score" class="col-md-12">
+      <h2>All done!</h2>
+      <h3>Your final score is <span id="final-score">0</span></h3>
+      <label for="initials-area">Enter initials:</label>
+      <input type="text" name="initials" maxlength="4" id="initials-area">
+      <a href="./to-high-scores.html">
+        <button id="submit-button" type="submit" onclick="subInitials()"</button>Submit</button>
+      </a>
+        <p id=subinitials</p>
+    </div>
+    </section>
+  <script src="./script.js"></script>
+</body>
+
+</html>
