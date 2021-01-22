@@ -2,15 +2,15 @@
 var runningQuestionIndex = 0;
 var start = document.getElementById("start-game");
 var scoreCount = 0;
-var secondsLeft;
+var secondsLeft = 10
 var penalty = 10;
 var timer = document.getElementById("timer");
 var questionsDiv = document.getElementById("questionsDiv");
 var runningQuestionIndex = 0;
 var ulCreate = document.createElement("ul");
-var totalSeconds = 300;
+var totalSeconds = 60;
 var elapsedSeconds = 0;
-
+var triggerPenalty = false
 // game questions
 
 var questions = [
@@ -34,8 +34,6 @@ var questions = [
 
     },
 ];
-
-
 start.addEventListener("click", function () {
     var start = document.getElementById("start-game");
     if (start.style.display === "none") {
@@ -86,7 +84,6 @@ function render(runningQuestionIndex) {
         listItem.addEventListener("click", (compare));
     });
 }
-
 // Event to compare choices with answer
 function compare(event) {
     var element = event.target;
@@ -100,8 +97,9 @@ function compare(event) {
             createDiv.innerHTML = "Correct!";
             // Correct condition 
         } else {
-            // Will deduct -5 seconds off secondsLeft for wrong answers
+            // Will deduct -10 seconds off secondsLeft for wrong answers
             secondsLeft = secondsLeft - penalty;
+            triggerPenalty = true
             createDiv.innerHTML = "Wrong!";
         }
     }
@@ -126,16 +124,12 @@ var renderTimer = function () {
 };
 var nextSecond = function () {
     // subtract time
-    totalSeconds--;
-    renderTimer();
-    // stop the timer when time runs out
-    if (totalSeconds <= 0) {
-        clearInterval(interval);
+    if (triggerPenalty == true) {
+        totalSeconds -= 10
+        triggerPenalty = false
     }
-};
-var subTenSeconds = function () {
-    // sub.time
-    totalSeconds -= 10;
+    
+    totalSeconds--;
     renderTimer();
     // stop the timer when time runs out
     if (totalSeconds <= 0) {
@@ -145,7 +139,6 @@ var subTenSeconds = function () {
 var start = function (event) {
     console.log(event.target);
     // reset time
-
     // clear any intervals that may already be there
     // fixes time jumping on my button (only want the intervals that I need for my timer)
     if (interval) {
@@ -189,7 +182,10 @@ if (secondsLeft >= 0) {
 }
 
 // Event listener to capture initials and local storage for initials and score
-document.getElementById("submit-button").addEventListener("click", function () {
+document.getElementById("submit-button").addEventListener("click", function (event) {
+    var createInput = document.getElementById("initials-area")
+    event.preventDefault()
+
     var initials = createInput.value;
 
     if (initials === null) {
@@ -201,7 +197,6 @@ else {
             initials: initials,
             score: timeRemaining
         };
-        // console.log(finalScore);
         var allScores = localStorage.getItem("allScores");
         if (allScores === null) {
             allScores = [];

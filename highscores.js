@@ -1,5 +1,5 @@
 // Declared variables
-var highScore = document.querySelector("#high-Score");
+var highScore = document.querySelector("#highScore");
 var clear = document.querySelector("#clear");
 var reStart = document.querySelector("#restart");
 
@@ -10,7 +10,7 @@ clear.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 });
-// Retreives local stroage 
+// Retrieves local storage 
 var allScores = localStorage.getItem("allScores");
 allScores = JSON.parse(allScores);
 
