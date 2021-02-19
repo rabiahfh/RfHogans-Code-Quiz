@@ -2,7 +2,7 @@
 
 This is my project where I created a Code Quiz from scratch. The Quiz includes of the criteria such as create the start button, set a timer starts, ask the questions. My page is responsive and styling is according to the demo. At the end you can save your initials aswellto local-storage.
 
-![text(
+![text](Assets/CQ-photo.png)
 
 ## Contributing
 
